@@ -4,10 +4,7 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-console-subscriber = "0.2.0"
-futures = "0.3.30"
 md5 = "0.7.0"
-num_cpus = "1.16.0"
 rand = "0.8.5"
 rayon = "1.8.0"
 tokio = { version = "1.35.1", features = ["full"] }
