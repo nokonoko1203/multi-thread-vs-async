@@ -29,15 +29,15 @@ pub async fn cpu_bound_process() -> std::io::Result<()> {
 }
 
 async fn generate_file_async(i: usize, lines_per_file: usize) -> std::io::Result<()> {
+    let mut file = BufWriter::new(File::create(format!("output/file_{}.txt", i)).await?);
     let mut rng = StdRng::from_entropy();
-    let mut file = File::create(format!("output/file_{}.txt", i)).await?;
 
     for _ in 0..lines_per_file {
         file.write_all(format!("{}\n", rng.gen::<u64>()).as_bytes())
             .await?;
     }
 
-    Ok(())
+    file.flush().await
 }
 
 pub async fn io_bound_process() -> std::io::Result<()> {
