@@ -1,4 +1,4 @@
-use rand::Rng;
+use rand::{rngs::StdRng, Rng, SeedableRng};
 use std::fs::File;
 use std::io::{BufRead, BufReader, BufWriter, Write};
 
@@ -25,7 +25,7 @@ pub fn cpu_bound_process() -> std::io::Result<()> {
 }
 
 fn generate_files(file_count: usize, lines_per_file: usize) -> std::io::Result<()> {
-    let mut rng = rand::thread_rng();
+    let mut rng = StdRng::from_entropy();
 
     for i in 0..file_count {
         let mut file = BufWriter::new(File::create(format!("output/file_{}.txt", i))?);

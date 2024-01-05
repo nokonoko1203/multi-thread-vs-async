@@ -34,17 +34,17 @@ async fn main() -> std::io::Result<()> {
         }
     }
 
-    // println!("Generating large file...");
-    // generate_large_file("output/large_file.txt", 10_000_000).await?;
+    println!("Generating large file...");
+    generate_large_file("output/large_file.txt", 10_000_000).await?;
 
-    // println!("Processing cpu bound task...");
-    // single_thread_cpu_bound_process()?;
-    // multi_thread_cpu_bound_process()?;
-    // async_cpu_bound_process().await?;
+    println!("Processing cpu bound task...");
+    single_thread_cpu_bound_process()?;
+    multi_thread_cpu_bound_process()?;
+    async_cpu_bound_process().await?;
 
     println!("Processing io bound task...");
-    // single_thread_io_bound_process()?;
-    // multi_thread_io_bound_process()?;
+    single_thread_io_bound_process()?;
+    multi_thread_io_bound_process()?;
     async_io_bound_process().await?;
 
     Ok(())
